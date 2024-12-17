@@ -1,0 +1,116 @@
+The To-Do List project is a simple RESTful API built with Node.js and Express.js that allows users to manage tasks by adding, retrieving, updating, and deleting them. It uses in-memory storage for tasks and provides endpoints to interact with the tasks via HTTP requests
+
+This will start the server on http://localhost:5000 by default. You can now make requests to the API using tools like Postman or cURL.
+
+API Endpoints
+1. GET / - Home Page
+Returns a simple welcome message.
+
+Response:
+json
+Copy code
+{
+  "message": "Hello, Welcome to the To-Do List App!"
+}
+2. POST /tasks - Add a New Task
+Creates a new task. You must provide a text field in the request body.
+
+Request:
+json
+Copy code
+{
+  "text": "Learn Express.js"
+}
+Response:
+json
+Copy code
+{
+  "id": 1,
+  "text": "Learn Express.js"
+}
+3. GET /tasks - Get All Tasks
+Fetches all tasks from the list.
+
+Response:
+json
+Copy code
+[
+  {
+    "id": 1,
+    "text": "Buy groceries"
+  },
+  {
+    "id": 2,
+    "text": "Complete homework"
+  }
+]
+4. GET /tasks/:id - Get Task by ID
+Fetches a single task by its id.
+
+Example Request:
+GET /tasks/1
+
+Response:
+json
+Copy code
+{
+  "id": 1,
+  "text": "Buy groceries"
+}
+5. PUT /tasks/:id - Update a Task by ID
+Updates the task's text based on its id.
+
+Request:
+json
+Copy code
+{
+  "text": "Buy groceries and fruits"
+}
+Response:
+json
+Copy code
+{
+  "id": 1,
+  "text": "Buy groceries and fruits"
+}
+6. DELETE /tasks/:id - Delete a Task by ID
+Deletes a task based on its id.
+
+Response:
+json
+Copy code
+{
+  "message": "Task deleted successfully"
+}
+Error Handling
+If you attempt to access a task that doesn't exist, you will receive a 404 Not Found error.
+If you try to create a task without a text value, you will receive a 400 Bad Request error with a helpful error message.
+Example Requests
+Create a Task
+
+Method: POST
+URL: http://localhost:5000/tasks
+Body:
+json
+Copy code
+{
+  "text": "Complete project"
+}
+Get All Tasks
+
+Method: GET
+URL: http://localhost:5000/tasks
+Update a Task
+
+Method: PUT
+URL: http://localhost:5000/tasks/1
+Body:
+json
+Copy code
+{
+  "text": "Complete project and submit"
+}
+Delete a Task
+
+Method: DELETE
+URL: http://localhost:5000/tasks/1
